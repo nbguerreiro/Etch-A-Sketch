@@ -1,4 +1,4 @@
-#container {
+.container {
     width: 496px;
     height: 496px;
     background-color: aquamarine;
@@ -10,10 +10,14 @@
     grid-gap: 1px;
 }
 
-#container div {
+.container div {
     background-color: gray;
     /* width: 26px;
     height: 26px; */
     /* border: 2px solid black; */
     /* margin: 5px; */
 }
+
+/* .square-hover {
+    background-color: black;
+} */
