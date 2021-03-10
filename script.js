@@ -1,29 +1,49 @@
 const container = document.querySelector('.container');
 
-let numOfSquares = 100;
-let widthOfSquares = 100 / numOfSquares;
-// console.log(widthOfSquares);
-container.style.gridTemplateColumns = `repeat(${numOfSquares}, ${widthOfSquares}%)`;
-container.style.gridTemplateRows = `repeat(${numOfSquares}, ${widthOfSquares}%)`;
-
-
-for (var i = 1; i <= Math.pow(numOfSquares, 2); i++) {
-    let newdiv = document.createElement('div');
-    newdiv.classList.add('square');
-    container.appendChild(newdiv);
+function randomValRGB() {
+    return Math.floor(Math.random() * 255);
 }
 
-const squares = container.querySelectorAll('.square');
+function randomRGB() {
+    return `rgb(${randomValRGB()}, ${randomValRGB()}, ${randomValRGB()})`;
+}
 
-squares.forEach((s) => {
-    s.addEventListener('mouseenter', () => {
-        s.style.backgroundColor = 'black';
+function makeGrid(n) {
+    container.innerHTML = '';
+    let widthOfSquares = 100 / n;
+    container.style.gridTemplateColumns = `repeat(${n}, ${widthOfSquares}%)`;
+    container.style.gridTemplateRows = `repeat(${n}, ${widthOfSquares}%)`;
+
+    for (var i = 1; i <= Math.pow(n, 2); i++) {
+        let newdiv = document.createElement('div');
+        newdiv.classList.add('square');
+        container.appendChild(newdiv);
+    }
+
+    let squares = container.querySelectorAll('.square');
+
+    squares.forEach((s) => {
+        s.addEventListener('mouseenter', () => {
+            // s.style.backgroundColor = 'black';
+            s.style.backgroundColor = randomRGB();
+        })
     })
-})
+}
+makeGrid(16);
+
+
+
+
 
 function restart() {
-    console.log("restart");
+    let squares = container.querySelectorAll('.square');
     squares.forEach((s) => {
         s.style.backgroundColor = null;
     })
+
+    let question = prompt("How many squares?", "16");
+    if (question > 100) {
+        question = 100;
+    }
+    makeGrid(question);
 }
