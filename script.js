@@ -17,6 +17,7 @@ function makeGrid(n) {
     for (var i = 1; i <= Math.pow(n, 2); i++) {
         let newdiv = document.createElement('div');
         newdiv.classList.add('square');
+        newdiv.style.filter = "brightness(80%)";
         container.appendChild(newdiv);
     }
 
@@ -24,15 +25,20 @@ function makeGrid(n) {
 
     squares.forEach((s) => {
         s.addEventListener('mouseenter', () => {
-            // s.style.backgroundColor = 'black';
             s.style.backgroundColor = randomRGB();
+
+            // darken color 10% with each passing
+            let bright = Number(s.style.filter.match(/\d+/)[0]) - 10;
+            if (bright < 0) {
+                bright = 0;
+            }
+            s.style.filter = `brightness(${bright}%)`;
         })
     })
 }
+
+// initial grid
 makeGrid(16);
-
-
-
 
 
 function restart() {
