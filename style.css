@@ -1,13 +1,20 @@
+body {
+    width: 90vw;
+    height: 90vh;
+}
+
 .container {
-    width: 496px;
-    height: 496px;
+    /* width: 496px;
+    height: 496px; */
+    width: 90%;
+    height: 90%;
     background-color: aquamarine;
 
-    padding: 5px;
+    /* padding: 5px; */
 
     display: grid;
-    grid-template-columns: repeat(16, 30px);
-    grid-gap: 1px;
+    /* grid-template-columns: repeat(10, 10%); */
+    /* grid-gap: 1px; */
 }
 
 .container div {
